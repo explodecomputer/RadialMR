@@ -4,7 +4,7 @@
 \alias{ivw_radial}
 \title{ivw_radial}
 \usage{
-ivw_radial(r_input, alpha, weights, summary)
+ivw_radial(r_input, alpha, weights, tol)
 }
 \arguments{
 \item{r_input}{A formatted data frame using the \code{format_radial} function.}
@@ -13,7 +13,7 @@ ivw_radial(r_input, alpha, weights, summary)
 
 \item{weights}{A value specifying the inverse variance weights used to calculate IVW estimate and Cochran's Q statistic. By default modified second order weights are used, but one can choose to select first order (\code{1}), second order (\code{2}) or modified second order weights (\code{3}).}
 
-\item{summary}{Indicates whether a summary of the radial IVW model should be printed (default= \code{TRUE}) or withheld (\code{FALSE}).}
+\item{tol}{A value indicating the tolerance threshold for performing the iterative IVW approach. The value represents the minimum difference between the coefficients of the previous and current iterations required for a further iteration to be performed (default= \code{0.0001}).}
 }
 \value{
 An object of class \code{"IVW"} containing the following components:\describe{
@@ -23,6 +23,14 @@ An object of class \code{"IVW"} containing the following components:\describe{
 \item{\code{outliers}}{A data frame containing variants identified as outliers, with respective Q statistics, chi-squared tests and SNP identification.}
 \item{\code{data}}{A data frame containing containing SNP IDs, inverse variance weights, the product of the inverse variance weight and ratio estimate for each variant, contribution to overall heterogeneity with corresponding p-value, and a factor indicator showing outlier status.}
 \item{\code{confint}}{A vector giving lower and upper confidence limits for the radial IVW effect estimate.}
+\item{\code{it.coef}}{The estimated iterative coefficient, its standard error, t-statistic and corresponding (two-sided) p-value.}
+\item{\code{it.confint}}{A vector giving lower and upper confidence limits for the iterative radial IVW effect estimate.} 
+\item{\code{fe.coef}}{The estimated fixed effect exact coefficient, its standard error, t-statistic and corresponding (two-sided) p-value.}
+\item{\code{fe.confint}}{A vector giving lower and upper confidence limits for the fixed effect exact radial IVW effect estimate.}
+\item{\code{re.coef}}{The estimated random effect exact coefficient, its standard error, t-statistic and corresponding (two-sided) p-value.}
+\item{\code{re.confint}}{A vector giving lower and upper confidence limits for the random effect exact radial IVW effect estimate.}
+\item{\code{mf}}{The mean F statistic for the set of genetic variants, indicative of instrument strength.}
+
 }
 }
 \description{
@@ -30,11 +38,11 @@ Fits a radial inverse variance weighted (IVW) model using first order, second or
 }
 \examples{
 
-ivw_radial(r_input,0.05,1)
+ivw_radial(r_input,0.05,1,0.0001,T)
 
 }
 \references{
-Bowden, J. et al., 2017. "Improving the visualisation, interpretation and analysis of two-sample summary data Mendelian randomization via the radial plot and radial regression." BioRxiv. doi: https://doi.org/10.1101/200378. Available at: \url{https://www.biorxiv.org/content/early/2017/10/11/200378}
+Bowden, J., et al., Improving the visualization, interpretation and analysis of two-sample summary data Mendelian randomization via the Radial plot and Radial regression. International Journal of Epidemiology, 2018. 47(4): p. 1264-1278.
 }
 \author{
 Wes Spiller; Jack Bowden.

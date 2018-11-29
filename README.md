@@ -21,15 +21,19 @@ regression for inverse variance weighted and MR-Egger regression models. The pac
 1. The `format_radial` function is used to convert a data frame containing summary data into a set format for radial analyses.
 
 2. The `ivw_radial` function fits a radial inverse variance weighted (IVW) model using either first order, second order, or modified
-second order weights. It provides an effect estimate and allows for outliers to be identified using Cochran's Q-statistic.
+second order weights. It provides an effect estimate and allows for outliers to be identified using Cochran's Q-statistic. This function 
+now also includes iterative and exact IVW estimation, as described in: Improving the accuracy of two-sample summary data Mendelian randomization: 
+moving beyond the NOME assumption(https://www.biorxiv.org/content/early/2018/07/02/159442).
 
 3. The `egger_radial` function fits a radial MR-Egger model using either first order, second order, or modified
 second order weights. It provides an effect estimate and allows for outliers to be identified using Rucker's Q-statistic.
 
-4. The `plot_radial` function produces a radial plot corresponding to the output of the `ivw_radial` and `egger_radial` functions. The
+4. The `plotly_radial` function produces interactive radial plots corresponding to the output of the `ivw_radial` and `egger_radial` functions.
+
+5. The `plot_radial` function produces a radial plot corresponding to the output of the `ivw_radial` and `egger_radial` functions. The
 function provides a range of scaling and aesthetic options showing either an IVW estimate, MR-Egger estimate, or both estimates simultaneously.
 
-5. The `funnel_radial` function produces generalized radial IVW and MR-Egger funnel plots either individually or simultaneously corresponding to the output of the `ivw_radial` and `egger_radial` functions. The function also allows for lines indicating
+6. The `funnel_radial` function produces generalized radial IVW and MR-Egger funnel plots either individually or simultaneously corresponding to the output of the `ivw_radial` and `egger_radial` functions. The function also allows for lines indicating
 the magnitude for the MR Egger transformation for each variant, though it should be noted that this distance is a function of the weight attributed to the variant,
 and is therefore not indicative of outliers. 
 
@@ -39,9 +43,9 @@ radial plot regression for the MR-setting.
 
 ## Citation
 
-The preprint is on BioRxiv:
+The paper has been published in the International Journal of Epidemiology:
 
-[Improving the visualisation, interpretation and analysis of two-sample summary data Mendelian randomization via the radial plot and radial regression. bioRxiv. doi: https://doi.org/10.1101/200378](https://www.biorxiv.org/content/early/2017/10/11/200378)
+[Bowden, J., et al., Improving the visualization, interpretation and analysis of two-sample summary data Mendelian randomization via the Radial plot and Radial regression. International Journal of Epidemiology, 2018. 47(4): p. 1264-1278.] (https://academic.oup.com/ije/article/47/4/1264/5046668)
 
 ## License
 
